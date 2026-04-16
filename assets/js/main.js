@@ -345,4 +345,62 @@
 			loadComments();
 		})();
 
+		// Location-based Time Display System
+		(function initLocationTime() {
+			const $timeDisplay = $('#time-display');
+			const $locationDisplay = $('#location-display');
+			let timezone = null;
+
+			// Fetch user's location and timezone from IP
+			function fetchLocationAndTimezone() {
+				fetch('https://ipapi.co/json/')
+					.then(response => response.json())
+					.then(data => {
+						timezone = data.timezone;
+						const city = data.city || data.country_name;
+						$locationDisplay.text(city);
+						updateTime();
+					})
+					.catch(() => {
+						// Fallback to browser's local timezone if API fails
+						timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+						$locationDisplay.text('Local');
+						updateTime();
+					});
+			}
+
+			// Update time display
+			function updateTime() {
+				if (!timezone) return;
+
+				const now = new Date();
+				const options = {
+					timeZone: timezone,
+					hour: '2-digit',
+					minute: '2-digit',
+					second: '2-digit',
+					hour12: true
+				};
+
+				const dateOptions = {
+					timeZone: timezone,
+					weekday: 'short',
+					month: 'short',
+					day: 'numeric',
+					year: 'numeric'
+				};
+
+				const time = now.toLocaleString('en-US', options);
+				const date = now.toLocaleString('en-US', dateOptions);
+
+				$timeDisplay.html(`${time}<br><span style="font-size: 0.75rem; color: rgba(255, 255, 255, 0.7);">${date}</span>`);
+			}
+
+			// Initial fetch and setup
+			fetchLocationAndTimezone();
+
+			// Update time every second
+			setInterval(updateTime, 1000);
+		})();
+
 })(jQuery);
