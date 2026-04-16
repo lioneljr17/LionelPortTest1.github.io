@@ -1,0 +1,213 @@
+<!DOCTYPE HTML>
+<!--
+	Massively by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Projects</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+		<style>
+			.game-container {
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				margin: 20px 0;
+			}
+			.game-controls {
+				margin: 20px 0;
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				gap: 10px;
+			}
+			.game-mode-selector {
+				display: flex;
+				gap: 20px;
+				margin: 10px 0;
+			}
+			.player-names {
+				display: grid;
+				grid-template-columns: 1fr 1fr;
+				gap: 10px;
+				margin: 10px 0;
+			}
+			.name-input {
+				display: flex;
+				flex-direction: column;
+				gap: 5px;
+			}
+			.name-input input {
+				padding: 5px;
+				border: 1px solid #ccc;
+				border-radius: 4px;
+			}
+			.game-buttons {
+				display: flex;
+				gap: 10px;
+			}
+			#pongCanvas {
+				border: 2px solid #333;
+				background: #000;
+				margin: 20px 0;
+			}
+			.game-instructions {
+				text-align: center;
+				margin: 20px 0;
+				max-width: 600px;
+			}
+		</style>
+	</head>
+	<body class="is-preload">
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Header -->
+					<header id="header">
+						<a href="index.html" class="logo">Lionel's</a>
+					</header>
+
+				<!-- Nav -->
+					<nav id="nav">
+						<ul class="links">
+							<li><a href="index.html">About</a></li>
+							<li><a href="generic.html">skill-set</a></li>
+							<li><a href="elements.html">Experience</a></li>
+							<li class="active"><a href="projects.html">Projects</a></li>
+						</ul>
+						<ul class="icons">
+							<li><a href="https://www.linkedin.com/in/lionel-jr-desroses/"
+								class="icon brands fa-linkedin"><span class="label">linkedin</span></a></li>
+							<li><a href="https://github.com/lioneljr17"
+								class="icon brands fa-github"><span class="label">GitHub</span></a></li>
+						</ul>
+					</nav>
+
+				<!-- Main -->
+					<div id="main">
+
+						<!-- Featured Post -->
+							<article class="post featured">
+								<header class="major">
+									<h2><a href="#">My Projects</a></h2>
+									<p>Here are some of the projects I've worked on. Click on any project to see it in action!</p>
+								</header>
+							</article>
+
+						<!-- Pong Game -->
+							<article class="post">
+								<header class="major">
+									<h2><a href="#pong-game">Pong Game</a></h2>
+									<p>A classic Pong game built with Java Swing, now playable in your browser! Features single-player mode against AI and two-player mode.</p>
+								</header>
+
+								<div class="game-container">
+									<div class="game-controls">
+										<div class="game-mode-selector">
+											<label>
+												<input type="radio" name="gameMode" value="single" checked>
+												1 Player (vs Computer)
+											</label>
+											<label>
+												<input type="radio" name="gameMode" value="two">
+												2 Players
+											</label>
+										</div>
+
+										<div class="player-names">
+											<div class="name-input">
+												<label for="player1Name">Player 1:</label>
+												<input type="text" id="player1Name" value="Player 1" maxlength="20">
+											</div>
+											<div class="name-input">
+												<label for="player2Name">Player 2:</label>
+												<input type="text" id="player2Name" value="Computer" maxlength="20" disabled>
+											</div>
+										</div>
+
+										<div class="game-buttons">
+											<button id="startButton">Start Game</button>
+											<button id="stopButton" disabled>Stop Game</button>
+										</div>
+									</div>
+
+									<canvas id="pongCanvas" width="1000" height="555"></canvas>
+
+									<div class="game-instructions">
+										<h3>How to Play:</h3>
+										<p><strong>Single Player:</strong> Use W/S keys to control your paddle</p>
+										<p><strong>Two Players:</strong> Player 1 uses W/S, Player 2 uses Up/Down arrows</p>
+										<p><strong>Goal:</strong> First to 5 points wins!</p>
+									</div>
+								</div>
+							</article>
+
+					</div>
+
+				<!-- Footer -->
+					<footer id="footer">
+						<section>
+							<form id="contact-form" method="post" action="https://formspree.io/f/mnjljvzo">
+								<div class="fields">
+									<div class="field">
+										<label for="name">Name</label>
+										<input type="text" name="name" id="name" required />
+									</div>
+									<div class="field">
+										<label for="email">Email</label>
+										<input type="email" name="email" id="email" required />
+									</div>
+									<div class="field">
+										<label for="message">Message</label>
+										<textarea name="message" id="message" rows="3" required></textarea>
+									</div>
+								</div>
+								<ul class="actions">
+									<li><input type="submit" value="Send Message" /></li>
+								</ul>
+							</form>
+						</section>
+						<section class="split contact">
+							<section class="alt">
+								<h3>Address</h3>
+								<p>Queens, New York</p>
+							</section>
+							<section>
+								<h3>Phone</h3>
+								<p><a href="#">(347) 356-8655</a></p>
+							</section>
+							<section>
+								<h3>Email</h3>
+								<p><a href="#">ldesroses90@gmail.com</a></p>
+							</section>
+							<section>
+								<h3>Social</h3>
+								<ul class="icons alt">
+									<li><a href="https://www.linkedin.com/in/lionel-jr-desroses/"
+										class="icon brands fa-linkedin"><span class="label">linkedin</span></a></li>
+									<li><a href="https://github.com/lioneljr17"
+										class="icon brands fa-github"><span class="label">GitHub</span></a></li>
+								</ul>
+							</section>
+						</section>
+					</footer>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+			<script src="js/pong.js"></script>
+
+	</body>
+</html>
