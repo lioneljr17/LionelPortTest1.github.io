@@ -4685,5 +4685,145 @@ input, select, textarea {
 			box-shadow: 0 0 1.5rem 0 rgba(0, 0, 0, 0.2);
 			visibility: visible;
 		}
+	}
+
+/* Comments Section Styles */
+.comments-section {
+	max-width: 100%;
+	margin: 3rem 0;
+	padding: 2rem;
+	background: rgba(255, 255, 255, 0.05);
+	border-radius: 0.25rem;
+	border-left: 3px solid #ff6348;
+}
+
+.comments-section h2 {
+	font-size: 1.5rem;
+	margin-bottom: 2rem;
+	color: #fff;
+	text-transform: uppercase;
+	letter-spacing: 2px;
+}
+
+.comment-form {
+	margin-bottom: 3rem;
+}
+
+.comment-form .field {
+	margin-bottom: 1.5rem;
+}
+
+.comment-form label {
+	display: block;
+	margin-bottom: 0.5rem;
+	font-weight: 700;
+	color: #fff;
+	font-size: 0.9rem;
+	text-transform: uppercase;
+	letter-spacing: 1px;
+}
+
+.comment-form input,
+.comment-form textarea {
+	width: 100%;
+	padding: 0.8rem;
+	background: rgba(255, 255, 255, 0.1);
+	border: 1px solid rgba(255, 255, 255, 0.2);
+	color: #fff;
+	font-family: inherit;
+	font-size: 0.9rem;
+	border-radius: 0.25rem;
+	transition: all 0.3s ease;
+}
+
+.comment-form input:focus,
+.comment-form textarea:focus {
+	outline: none;
+	background: rgba(255, 255, 255, 0.15);
+	border-color: #ff6348;
+	box-shadow: 0 0 10px rgba(255, 99, 72, 0.3);
+}
+
+.comment-form textarea {
+	resize: vertical;
+}
+
+.comments-list {
+	display: flex;
+	flex-direction: column;
+	gap: 1.5rem;
+}
+
+.comment-item {
+	background: rgba(255, 255, 255, 0.08);
+	padding: 1.5rem;
+	border-radius: 0.25rem;
+	border-left: 3px solid #ff6348;
+	animation: slideIn 0.3s ease;
+}
+
+@keyframes slideIn {
+	from {
+		opacity: 0;
+		transform: translateY(-10px);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+.comment-header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin-bottom: 0.8rem;
+}
+
+.comment-name {
+	font-weight: 700;
+	color: #ff6348;
+	font-size: 0.95rem;
+	text-transform: uppercase;
+	letter-spacing: 0.5px;
+}
+
+.comment-time {
+	font-size: 0.75rem;
+	color: rgba(255, 255, 255, 0.5);
+}
+
+.comment-text {
+	color: rgba(255, 255, 255, 0.9);
+	line-height: 1.6;
+	word-wrap: break-word;
+	margin-bottom: 1rem;
+}
+
+.comment-delete {
+	background: #ff6348;
+	color: #fff;
+	border: none;
+	padding: 0.5rem 1rem;
+	border-radius: 0.25rem;
+	cursor: pointer;
+	font-size: 0.75rem;
+	text-transform: uppercase;
+	font-weight: 700;
+	letter-spacing: 1px;
+	transition: all 0.3s ease;
+}
+
+.comment-delete:hover {
+	background: #ff4520;
+	transform: scale(1.05);
+}
+
+.no-comments {
+	text-align: center;
+	color: rgba(255, 255, 255, 0.5);
+	font-size: 0.9rem;
+	padding: 2rem;
+}
 
 	}

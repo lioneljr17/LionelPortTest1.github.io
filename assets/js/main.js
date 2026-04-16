@@ -255,4 +255,94 @@
 
 		}
 
+		// Comments System
+		(function initComments() {
+			const STORAGE_KEY = 'page_comments';
+			const $commentForm = $('#comment-form');
+			const $commentsList = $('#comments-list');
+			const $commentName = $('#comment-name');
+			const $commentText = $('#comment-text');
+
+			// Load comments from localStorage
+			function loadComments() {
+				const comments = JSON.parse(localStorage.getItem(STORAGE_KEY)) || [];
+				displayComments(comments);
+			}
+
+			// Display comments
+			function displayComments(comments) {
+				$commentsList.empty();
+
+				if (comments.length === 0) {
+					$commentsList.html('<p class="no-comments">No comments yet. Be the first to share your thoughts!</p>');
+					return;
+				}
+
+				comments.forEach((comment, index) => {
+					const commentDate = new Date(comment.date);
+					const formattedDate = commentDate.toLocaleDateString() + ' ' + commentDate.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+					
+					const $commentItem = $(`
+						<div class="comment-item">
+							<div class="comment-header">
+								<span class="comment-name">${escapeHtml(comment.name)}</span>
+								<span class="comment-time">${formattedDate}</span>
+							</div>
+							<p class="comment-text">${escapeHtml(comment.text)}</p>
+							<button class="comment-delete" data-index="${index}">Delete</button>
+						</div>
+					`);
+
+					$commentItem.find('.comment-delete').click(function() {
+						deleteComment(index);
+					});
+
+					$commentsList.append($commentItem);
+				});
+			}
+
+			// Add new comment
+			function addComment(name, text) {
+				const comments = JSON.parse(localStorage.getItem(STORAGE_KEY)) || [];
+				comments.push({
+					name: name,
+					text: text,
+					date: new Date().toISOString()
+				});
+				localStorage.setItem(STORAGE_KEY, JSON.stringify(comments));
+				displayComments(comments);
+			}
+
+			// Delete comment
+			function deleteComment(index) {
+				const comments = JSON.parse(localStorage.getItem(STORAGE_KEY)) || [];
+				comments.splice(index, 1);
+				localStorage.setItem(STORAGE_KEY, JSON.stringify(comments));
+				displayComments(comments);
+			}
+
+			// Escape HTML to prevent XSS
+			function escapeHtml(text) {
+				const div = document.createElement('div');
+				div.textContent = text;
+				return div.innerHTML;
+			}
+
+			// Form submission
+			$commentForm.on('submit', function(e) {
+				e.preventDefault();
+				const name = $commentName.val().trim();
+				const text = $commentText.val().trim();
+
+				if (name && text) {
+					addComment(name, text);
+					$commentForm[0].reset();
+					$commentName.focus();
+				}
+			});
+
+			// Initial load
+			loadComments();
+		})();
+
 })(jQuery);
